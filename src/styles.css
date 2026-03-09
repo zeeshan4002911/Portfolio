@@ -18,64 +18,48 @@
   -webkit-text-size-adjust: 100%;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* LIGHT THEME */
+
+:root {
+
+  --bg: #f6f7fb;
+  --card: #ffffff;
+  --border: #e5e7eb;
+
+  --text-primary: #0f172a;
+  --text-secondary: #64748b;
+
+  --accent: #6366f1;
+
 }
 
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+/* DARK THEME */
+
+.dark {
+
+  --bg: #0f1117;
+  --card: #161a23;
+  --border: #2a2f3a;
+
+  --text-primary: #f3f4f6;
+  --text-secondary: #9ca3af;
+
+  --accent: #818cf8;
+
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
+/* background grid */
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
+.grid-bg {
+  background-color: var(--bg);
 
-.card {
-  padding: 2em;
-}
+  background-image:
+    linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-}
-
-.analog-markdown p {
-  text-align: left;
+  background-size: 40px 40px;
 }
