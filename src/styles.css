@@ -1,0 +1,65 @@
+@import 'tailwindcss';
+
+/* You can add global styles to this file, and also import other style files */
+:root {
+  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* LIGHT THEME */
+
+:root {
+
+  --bg: #f6f7fb;
+  --card: #ffffff;
+  --border: #e5e7eb;
+
+  --text-primary: #0f172a;
+  --text-secondary: #64748b;
+
+  --accent: #6366f1;
+
+}
+
+/* DARK THEME */
+
+.dark {
+
+  --bg: #0f1117;
+  --card: #161a23;
+  --border: #2a2f3a;
+
+  --text-primary: #f3f4f6;
+  --text-secondary: #9ca3af;
+
+  --accent: #818cf8;
+
+}
+
+/* background grid */
+
+.grid-bg {
+  background-color: var(--bg);
+
+  background-image:
+    linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+
+  background-size: 40px 40px;
+}
