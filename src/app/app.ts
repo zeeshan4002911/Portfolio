@@ -6,11 +6,12 @@ import { Projects } from './components/projects/projects';
 import { Skills } from './components/skills/skills';
 import { Contact } from './components/contact/contact';
 import { Footer } from './components/footer/footer';
+import { BackToTop } from './components/back-to-top/back-to-top';
 import { Theme } from './services/theme';
 
 @Component({
   selector: 'app-root',
-  imports: [Header, Hero, Experience, Projects, Skills, Contact, Footer],
+  imports: [Header, Hero, Experience, Projects, Skills, Contact, Footer, BackToTop],
   templateUrl: './app.html',
   styleUrl: './app.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

@@ -36,3 +36,57 @@
     filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.55));
   }
 }
+
+// ── Profile frame: two glass cards that sway behind the avatar ─────
+.profile-frame-card {
+  border-color: rgba(203, 213, 225, 0.7);  // ink-300/70 (light)
+  will-change: transform;
+
+  &--a {
+    transform: rotate(3deg);
+    animation: profile-sway-a 7s ease-in-out infinite;
+  }
+  &--b {
+    transform: rotate(-2deg);
+    animation: profile-sway-b 9s ease-in-out infinite;
+  }
+}
+
+.profile-frame-avatar {
+  border-color: rgba(203, 213, 225, 0.9);  // ink-300 (light)
+  box-shadow: 0 8px 30px -10px rgba(124, 58, 237, 0.18);
+}
+
+// Dark-mode treatment: bright accent border + soft glow so the frame stays visible
+:host-context(.dark) .profile-frame-card {
+  border-color: rgba(167, 139, 250, 0.4);  // accent-soft / 40
+  background-image: linear-gradient(
+    135deg,
+    rgba(30, 41, 59, 0.65),
+    rgba(15, 23, 42, 0.45)
+  );
+  box-shadow: 0 0 36px -10px rgba(124, 58, 237, 0.28);
+}
+
+:host-context(.dark) .profile-frame-avatar {
+  border-color: rgba(167, 139, 250, 0.65);
+  box-shadow:
+    0 0 0 1px rgba(167, 139, 250, 0.6),
+    0 16px 44px -10px rgba(124, 58, 237, 0.6);
+}
+
+@keyframes profile-sway-a {
+  0%, 100% { transform: rotate(3deg)  translateY(0); }
+  50%      { transform: rotate(6deg)  translateY(-4px); }
+}
+
+@keyframes profile-sway-b {
+  0%, 100% { transform: rotate(-2deg) translateY(0); }
+  50%      { transform: rotate(-5deg) translateY(3px); }
+}
+
+// Respect reduced-motion: hold the backing cards still
+@media (prefers-reduced-motion: reduce) {
+  .profile-frame-card--a,
+  .profile-frame-card--b { animation: none; }
+}
