@@ -1,0 +1,71 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow one concurrent deploy; don't cancel in-progress runs so live deploys finish.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      # User pages (repo named "<user>.github.io") deploy at the domain root → base "/".
+      # Project pages (any other repo name) deploy at "<user>.github.io/<repo>/" → base "/<repo>/".
+      - name: Resolve base-href
+        id: basehref
+        shell: bash
+        run: |
+          REPO="${GITHUB_REPOSITORY#*/}"
+          if [[ "$REPO" == *.github.io ]]; then
+            BASE="/"
+          else
+            BASE="/$REPO/"
+          fi
+          echo "value=$BASE" >> "$GITHUB_OUTPUT"
+          echo "Using base-href: $BASE"
+
+      - name: Build (production)
+        run: npx --no-install ng build --configuration production --base-href "${{ steps.basehref.outputs.value }}"
+
+      - name: Add SPA 404 fallback and disable Jekyll
+        run: |
+          cp dist/portfolio/browser/index.html dist/portfolio/browser/404.html
+          touch dist/portfolio/browser/.nojekyll
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist/portfolio/browser
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4

@@ -176,19 +176,55 @@ Edit [`src/app/app.html`](src/app/app.html) — the sections render in the order
 
 ## Deployment
 
-Any static host works since this is a pure SPA build.
+This is a pure SPA — any static host works. The repo ships ready for **GitHub Pages**; other targets just need the build output.
+
+### GitHub Pages (automated, recommended)
+
+A workflow at [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) builds and deploys on every push to `main`.
+
+**One-time setup:**
+
+1. Push this repo to GitHub.
+2. Go to **Settings → Pages**.
+3. Under **Build and deployment → Source**, choose **GitHub Actions**.
+4. Push to `main` (or run the workflow manually from the Actions tab).
+
+The workflow:
+
+- Detects the repo name and sets `--base-href` correctly:
+  - `<username>.github.io` repo → base `/` (deploys at the apex)
+  - any other repo (e.g. `Portfolio`) → base `/<repo>/`
+- Runs `ng build --configuration production`.
+- Copies `index.html` → `404.html` so SPA deep links work on Pages.
+- Drops a `.nojekyll` marker so Pages serves files starting with `_` correctly.
+- Publishes via the official `actions/deploy-pages@v4`.
+
+Your site will live at `https://<username>.github.io/<repo>/` (or `https://<username>.github.io/` for a user-pages repo).
+
+> **Heads-up:** if you're using a custom domain, add a `CNAME` file to `public/` containing your domain — Angular will copy it into the build output and Pages will honor it.
+
+### Local dry-run of the Pages build
 
 ```bash
-npm run build
-# upload dist/portfolio/browser/ to:
-#  - Cloudflare Pages
-#  - Vercel
-#  - Netlify
-#  - GitHub Pages
-#  - any static file server
+npm run build:gh-pages
+# serve dist/portfolio/browser/ with any static server, e.g.
+npx http-server dist/portfolio/browser -p 5000
 ```
 
-For Cloudflare Pages, point the deploy at `dist/portfolio/browser` as the output directory.
+This builds with `--base-href ./` so the dist folder works no matter where you serve it from.
+
+### Other static hosts
+
+Same idea — `npm run build` then upload `dist/portfolio/browser/`:
+
+| Host | Output directory |
+| --- | --- |
+| Cloudflare Pages | `dist/portfolio/browser` |
+| Vercel | `dist/portfolio/browser` |
+| Netlify | `dist/portfolio/browser` |
+| Any HTTP server | `dist/portfolio/browser` |
+
+For Vercel / Netlify, add a single-page-app redirect (`/* → /index.html 200`) so deep links resolve. Cloudflare Pages does this automatically.
 
 ---
 
@@ -198,6 +234,7 @@ For Cloudflare Pages, point the deploy at `dist/portfolio/browser` as the output
 | --- | --- |
 | `npm start` | Dev server with hot reload on `http://localhost:4200` |
 | `npm run build` | Production build to `dist/portfolio/browser/` |
+| `npm run build:gh-pages` | Production build with relative `--base-href ./` for static-server testing |
 | `npm run watch` | Development build in watch mode |
 | `npm test` | Karma + Jasmine unit tests |
 
