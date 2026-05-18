@@ -1,0 +1,38 @@
+// Polished hover state for floating tech-logo chips.
+// Each chip exposes its brand colour via the --brand CSS custom property,
+// which we use for an outline ring + soft drop glow on hover.
+.orbit-badge {
+  --brand: #94a3b8;
+  box-shadow: 0 4px 14px -4px rgba(15, 23, 42, 0.12);
+  transition:
+    box-shadow 250ms ease,
+    border-color 250ms ease,
+    transform 250ms ease;
+
+  &:hover,
+  &:focus-visible {
+    border-color: var(--brand);
+    box-shadow:
+      0 0 0 2px var(--brand),
+      0 12px 28px -8px color-mix(in srgb, var(--brand) 55%, transparent);
+    outline: none;
+  }
+
+  img {
+    transition: transform 250ms ease, filter 250ms ease;
+    filter: drop-shadow(0 1px 2px rgba(15, 23, 42, 0.18));
+  }
+
+  &:hover img,
+  &:focus-visible img {
+    transform: scale(1.08);
+  }
+}
+
+:host-context(.dark) .orbit-badge {
+  box-shadow: 0 4px 14px -4px rgba(0, 0, 0, 0.45);
+
+  img {
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.55));
+  }
+}

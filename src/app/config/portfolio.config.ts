@@ -70,17 +70,24 @@ export interface Experience {
 
 /**
  * Floating tech-stack badges around the hero avatar.
- * `slug` is the simpleicons.org slug - the logo SVG is fetched from
- * https://cdn.simpleicons.org/{slug}/ffffff (white on the brand-color chip).
- * Look up new slugs at https://simpleicons.org.
+ *
+ * `devicon` follows the path `<folder>/<file>` from the devicon CDN — e.g.
+ *   'angular/angular-original', 'kubernetes/kubernetes-plain'.
+ * The full URL becomes:
+ *   https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/{devicon}.svg
+ *
+ * Browse the catalog at https://devicon.dev — most icons have `-original`
+ * (full color), `-plain` (mono), and `-plain-wordmark` variants.
+ *
+ * `color` is the brand hex used for the hover ring + glow.
  * `position` is any Tailwind position class string applied to the badge.
  */
 export interface OrbitBadge {
   name: string;
-  slug: string;
+  devicon: string;    // e.g. 'angular/angular-original'
   url: string;
-  color: string;      // brand hex, e.g. '#DD0031'
-  position: string;   // Tailwind classes, e.g. 'left-2 top-10'
+  color: string;      // brand hex used on hover, e.g. '#DD0031'
+  position: string;   // Tailwind position classes, e.g. 'left-2 top-10'
 }
 
 export interface PortfolioConfig {
@@ -475,12 +482,12 @@ export const PORTFOLIO: PortfolioConfig = {
   // ─── HERO ORBIT BADGES (floating tech logos around avatar) ───────
   // Logos pulled from cdn.simpleicons.org. Look up slugs at https://simpleicons.org.
   orbitBadges: [
-    { name: 'Angular',    slug: 'angular',    url: 'https://angular.dev',            color: '#DD0031', position: 'right-2 top-6' },
-    { name: 'TypeScript', slug: 'typescript', url: 'https://www.typescriptlang.org', color: '#3178C6', position: 'left-2 top-10' },
-    { name: 'Python',     slug: 'python',     url: 'https://www.python.org',         color: '#3776AB', position: 'right-12 -top-2' },
-    { name: 'Node.js',    slug: 'nodedotjs',  url: 'https://nodejs.org',             color: '#5FA04E', position: 'left-0 bottom-20' },
-    { name: 'PostgreSQL', slug: 'postgresql', url: 'https://www.postgresql.org',     color: '#4169E1', position: 'right-0 bottom-10' },
-    { name: 'Kubernetes', slug: 'kubernetes', url: 'https://kubernetes.io',          color: '#326CE5', position: 'left-12 -bottom-2' },
+    { name: 'Angular',    devicon: 'angular/angular-original',       url: 'https://angular.dev',            color: '#DD0031', position: 'right-2 top-6' },
+    { name: 'TypeScript', devicon: 'typescript/typescript-original', url: 'https://www.typescriptlang.org', color: '#3178C6', position: 'left-2 top-10' },
+    { name: 'Python',     devicon: 'python/python-original',         url: 'https://www.python.org',         color: '#3776AB', position: 'right-12 -top-2' },
+    { name: 'Node.js',    devicon: 'nodejs/nodejs-original',         url: 'https://nodejs.org',             color: '#5FA04E', position: 'left-0 bottom-20' },
+    { name: 'PostgreSQL', devicon: 'postgresql/postgresql-original', url: 'https://www.postgresql.org',     color: '#4169E1', position: 'right-0 bottom-10' },
+    { name: 'Kubernetes', devicon: 'kubernetes/kubernetes-plain',    url: 'https://kubernetes.io',          color: '#326CE5', position: 'left-12 -bottom-2' },
   ],
 
   // ─── CERTIFICATIONS ───────────────────────────────────────────────

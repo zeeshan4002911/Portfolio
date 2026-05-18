@@ -130,23 +130,23 @@
           }
         </div>
 
-        <!-- orbit badges: real tech logos, click opens official site -->
-        @for (badge of orbitBadges; track badge.slug) {
+        <!-- orbit badges: full-color devicon logos, click opens official site -->
+        @for (badge of orbitBadges; track badge.devicon) {
           <a
             [href]="badge.url"
             target="_blank"
             rel="noopener"
             [attr.aria-label]="badge.name"
             [title]="badge.name"
-            class="absolute {{ badge.position }} h-10 w-10 rounded-xl flex items-center justify-center shadow-md animate-float hover:scale-110 hover:shadow-glow transition-transform duration-200 ring-1 ring-white/20"
-            [style.backgroundColor]="badge.color"
+            class="orbit-badge absolute {{ badge.position }} h-12 w-12 rounded-2xl flex items-center justify-center bg-white dark:bg-ink-900 border border-ink-200 dark:border-ink-800 animate-float"
+            [style.--brand]="badge.color"
             [style.animationDelay.ms]="$index * 350"
           >
             <img
-              [src]="iconUrl(badge.slug)"
+              [src]="iconUrl(badge.devicon)"
               [alt]="badge.name + ' logo'"
-              width="22"
-              height="22"
+              width="28"
+              height="28"
               loading="lazy"
               class="select-none pointer-events-none"
             />

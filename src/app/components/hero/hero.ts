@@ -14,8 +14,8 @@ export class Hero {
   protected readonly orbitBadges = PORTFOLIO.orbitBadges;
   protected readonly avatarFailed = signal(false);
 
-  iconUrl(slug: string): string {
-    return `https://cdn.simpleicons.org/${slug}/ffffff`;
+  iconUrl(devicon: string): string {
+    return `https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${devicon}.svg`;
   }
 
   onAvatarError() {
