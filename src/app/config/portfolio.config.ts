@@ -142,7 +142,7 @@ export const PORTFOLIO: PortfolioConfig = {
 
   // ─── CONTACT ──────────────────────────────────────────────────────
   contact: {
-    email: 'Zeeshan.md@accenture.com',
+    email: 'zeeshan4002911@gmail.com',
     phone: '+91 9903342626',
     linkedin: 'https://linkedin.com/in/zeeshan4002911',
     github: 'https://github.com/zeeshan4002911/',
@@ -160,7 +160,7 @@ export const PORTFOLIO: PortfolioConfig = {
   // ─── SOCIAL LINKS (rendered in hero & footer) ─────────────────────
   socials: [
     { platform: 'linkedin', url: 'https://linkedin.com/in/zeeshan4002911', label: 'LinkedIn' },
-    { platform: 'mail', url: 'mailto:Zeeshan.md@accenture.com', label: 'Email' },
+    { platform: 'mail', url: 'mailto:zeeshan4002911@gmail.com', label: 'Email' },
     { platform: 'phone', url: 'tel:+919903342626', label: 'Phone' },
     { platform: 'github', url: 'https://github.com/zeeshan4002911/', label: 'GitHub' },
   ],
@@ -419,9 +419,9 @@ export const PORTFOLIO: PortfolioConfig = {
       title: 'Refinery Supply & Demand Engine',
       role: 'Full Stack Developer · Accenture',
       description:
-        'Calculation-intensive supply & demand engine for refinery runs - modeling nameplate capacity from SODB data and adjusting projections live against outage events.',
+        'Calculation-intensive supply & demand engine for refinery runs - modeling nameplate capacity and adjusting projections live against outage events.',
       impact: [
-        'Modeled heavy supply/demand calculations driven by SODB nameplate capacity',
+        'Modeled heavy supply/demand calculations driven by nameplate capacity and outages',
         'Reacted in near real-time to outage signals affecting refinery throughput',
         'Optimized PostgreSQL functions to keep calc latency low for large datasets',
       ],
@@ -431,7 +431,7 @@ export const PORTFOLIO: PortfolioConfig = {
         { layer: 'API',            tech: 'Django REST',                     icon: 'api' },
         { layer: 'Engine',         tech: 'Supply / Demand Calculation',     icon: 'engine' },
         { layer: 'Database',       tech: 'PostgreSQL + PL/pgSQL',     icon: 'database' },
-        { layer: 'Integrations',   tech: 'SODB + Outage Event Feed',        icon: 'integration' },
+        { layer: 'Integrations',   tech: 'Outage Event Feed',        icon: 'integration' },
         { layer: 'Infrastructure', tech: 'Kubernetes',                      icon: 'infra' },
       ],
       featured: false,
