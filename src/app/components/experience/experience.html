@@ -1,0 +1,75 @@
+<section id="experience" class="relative">
+  <div class="max-w-6xl mx-auto px-6 py-20">
+    <div class="text-center mb-12">
+      <p class="font-mono text-sm text-ink-400"><span class="text-accent">$</span> career.history</p>
+      <h2 class="mt-2 text-3xl md:text-4xl font-extrabold tracking-tight">Experience</h2>
+    </div>
+
+    <!-- experiences -->
+    <div class="space-y-6">
+      @for (exp of experiences; track exp.id) {
+        <article class="rounded-2xl border border-ink-200 dark:border-ink-800 bg-white dark:bg-ink-900/40 shadow-card p-6 md:p-8">
+          <div class="flex flex-wrap items-start justify-between gap-3">
+            <div>
+              <h3 class="text-xl md:text-2xl font-bold">{{ exp.role }}</h3>
+              <p class="text-accent text-sm font-medium mt-0.5">{{ exp.company }}<span class="text-ink-400"> · {{ exp.period }}</span></p>
+              @if (exp.location) {
+                <p class="font-mono text-xs text-ink-400 mt-0.5">{{ exp.location }}</p>
+              }
+            </div>
+            @if (exp.current) {
+              <span class="inline-flex items-center gap-2 px-2.5 py-1 rounded-full font-mono text-[11px] bg-emerald-500/10 text-emerald-500 border border-emerald-500/30">
+                <span class="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse-slow"></span>
+                current
+              </span>
+            } @else {
+              <span class="inline-flex items-center gap-2 px-2.5 py-1 rounded-full font-mono text-[11px] bg-ink-500/10 text-ink-500 dark:text-ink-400 border border-ink-300 dark:border-ink-700">
+                past
+              </span>
+            }
+          </div>
+
+          <p class="mt-4 text-ink-600 dark:text-ink-300 text-sm leading-relaxed">{{ exp.summary }}</p>
+
+          <div class="mt-6">
+            <p class="font-mono text-xs text-ink-400 mb-3">$ key.highlights</p>
+            <div class="grid sm:grid-cols-2 gap-3">
+              @for (h of exp.highlights; track h.title) {
+                <div class="rounded-lg border border-ink-200 dark:border-ink-800 p-3 bg-ink-50/60 dark:bg-ink-900/60">
+                  <p class="font-semibold text-sm flex items-center gap-2">
+                    <span class="text-accent">▸</span>{{ h.title }}
+                  </p>
+                  <p class="mt-1 text-xs text-ink-600 dark:text-ink-300 leading-relaxed">{{ h.detail }}</p>
+                </div>
+              }
+            </div>
+          </div>
+
+          <div class="mt-6">
+            <p class="font-mono text-xs text-ink-400 mb-2">$ tech.stack</p>
+            <div class="flex flex-wrap gap-2">
+              @for (tech of exp.technologies; track tech) {
+                <span class="text-xs px-2.5 py-1 rounded-full bg-ink-100 dark:bg-ink-800/70 text-ink-700 dark:text-ink-200">
+                  {{ tech }}
+                </span>
+              }
+            </div>
+          </div>
+        </article>
+      }
+    </div>
+
+    <!-- certifications -->
+    <div class="mt-10 rounded-2xl border border-ink-200 dark:border-ink-800 bg-white dark:bg-ink-900/40 p-6 shadow-card">
+      <p class="font-mono text-xs text-ink-400 mb-3"><span class="text-accent">$</span> certifications</p>
+      <ul class="grid sm:grid-cols-2 gap-2 text-sm text-ink-700 dark:text-ink-200">
+        @for (cert of certifications; track cert) {
+          <li class="flex gap-2">
+            <span class="text-accent shrink-0">✓</span>
+            <span>{{ cert }}</span>
+          </li>
+        }
+      </ul>
+    </div>
+  </div>
+</section>

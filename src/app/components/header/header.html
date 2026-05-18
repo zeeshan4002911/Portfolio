@@ -1,0 +1,78 @@
+<header class="sticky top-0 z-40 glass">
+  <nav class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+    <a href="#" class="flex items-center gap-2 font-mono text-sm group">
+      <span class="text-accent">$</span>
+      <span class="font-semibold tracking-tight">{{ initials.toLowerCase() }}</span>
+      <span class="inline-block w-2 h-4 bg-accent animate-blink translate-y-0.5"></span>
+    </a>
+
+    <ul class="hidden md:flex items-center gap-1 text-sm font-mono">
+      @for (item of nav; track item.href) {
+        <li>
+          <a
+            [href]="item.href"
+            class="px-3 py-2 rounded-md text-ink-600 dark:text-ink-300 hover:text-ink-900 dark:hover:text-ink-50 hover:bg-ink-100 dark:hover:bg-ink-800/60 transition-colors"
+          >
+            <span class="text-ink-400">./</span>{{ item.label }}
+          </a>
+        </li>
+      }
+    </ul>
+
+    <div class="flex items-center gap-2">
+      <button
+        type="button"
+        (click)="theme.toggle()"
+        [attr.aria-label]="theme.isDark() ? 'Switch to light mode' : 'Switch to dark mode'"
+        class="h-9 w-9 rounded-md inline-flex items-center justify-center border border-ink-200 dark:border-ink-800 bg-white dark:bg-ink-900 hover:bg-ink-100 dark:hover:bg-ink-800 transition-colors"
+      >
+        @if (theme.isDark()) {
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="4"/>
+            <path d="M12 2v2"/><path d="M12 20v2"/>
+            <path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/>
+            <path d="M2 12h2"/><path d="M20 12h2"/>
+            <path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/>
+          </svg>
+        } @else {
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+        }
+      </button>
+
+      <button
+        type="button"
+        (click)="toggleMobile()"
+        aria-label="Toggle menu"
+        class="md:hidden h-9 w-9 rounded-md inline-flex items-center justify-center border border-ink-200 dark:border-ink-800"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          @if (mobileOpen()) {
+            <line x1="18" x2="6" y1="6" y2="18"/><line x1="6" x2="18" y1="6" y2="18"/>
+          } @else {
+            <line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/>
+          }
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  @if (mobileOpen()) {
+    <div class="md:hidden border-t border-ink-200 dark:border-ink-800">
+      <ul class="px-6 py-3 space-y-1 font-mono text-sm">
+        @for (item of nav; track item.href) {
+          <li>
+            <a
+              [href]="item.href"
+              (click)="closeMobile()"
+              class="block px-3 py-2 rounded-md hover:bg-ink-100 dark:hover:bg-ink-800/60"
+            >
+              <span class="text-ink-400">./</span>{{ item.label }}
+            </a>
+          </li>
+        }
+      </ul>
+    </div>
+  }
+</header>

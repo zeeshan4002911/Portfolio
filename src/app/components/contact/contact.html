@@ -1,0 +1,83 @@
+<section id="contact" class="relative grid-bg">
+  <div class="max-w-3xl mx-auto px-6 py-20">
+    <div class="text-center mb-10">
+      <p class="font-mono text-sm text-ink-400"><span class="text-accent">$</span> contact.init</p>
+      <h2 class="mt-2 text-3xl md:text-4xl font-extrabold tracking-tight">Let's Build Something</h2>
+      <p class="mt-3 text-ink-600 dark:text-ink-300">
+        Open to interesting roles, freelance work, and meaningful collaborations.
+      </p>
+    </div>
+
+    <!-- direct contacts -->
+    <div class="grid sm:grid-cols-3 gap-3 mb-8">
+      <a [href]="'mailto:' + contact.email" class="rounded-xl border border-ink-200 dark:border-ink-800 bg-white dark:bg-ink-900/60 p-4 flex flex-col items-start gap-1 hover:border-accent transition-colors">
+        <span class="font-mono text-xs text-ink-400">$ email</span>
+        <span class="font-medium text-sm break-all">{{ contact.email }}</span>
+      </a>
+      <a [href]="'tel:' + contact.phone.replace(' ', '')" class="rounded-xl border border-ink-200 dark:border-ink-800 bg-white dark:bg-ink-900/60 p-4 flex flex-col items-start gap-1 hover:border-accent transition-colors">
+        <span class="font-mono text-xs text-ink-400">$ phone</span>
+        <span class="font-medium text-sm">{{ contact.phone }}</span>
+      </a>
+      <a [href]="contact.linkedin" target="_blank" rel="noopener" class="rounded-xl border border-ink-200 dark:border-ink-800 bg-white dark:bg-ink-900/60 p-4 flex flex-col items-start gap-1 hover:border-accent transition-colors">
+        <span class="font-mono text-xs text-ink-400">$ linkedin</span>
+        <span class="font-medium text-sm">/in/zeeshan4002911</span>
+      </a>
+    </div>
+
+    <form (submit)="submit($event)" class="rounded-2xl border border-ink-200 dark:border-ink-800 bg-white dark:bg-ink-900/60 p-6 md:p-8 shadow-card space-y-4">
+      <div class="grid sm:grid-cols-2 gap-4">
+        <label class="block">
+          <span class="font-mono text-xs text-ink-400">$ your.name</span>
+          <input
+            type="text"
+            required
+            [ngModel]="name()"
+            (ngModelChange)="name.set($event)"
+            name="name"
+            class="mt-1 w-full rounded-md border border-ink-200 dark:border-ink-700 bg-ink-50 dark:bg-ink-950 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-accent"
+            placeholder="Ada Lovelace"
+          />
+        </label>
+        <label class="block">
+          <span class="font-mono text-xs text-ink-400">$ your.email</span>
+          <input
+            type="email"
+            required
+            [ngModel]="email()"
+            (ngModelChange)="email.set($event)"
+            name="email"
+            class="mt-1 w-full rounded-md border border-ink-200 dark:border-ink-700 bg-ink-50 dark:bg-ink-950 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-accent"
+            placeholder="ada@example.com"
+          />
+        </label>
+      </div>
+      <label class="block">
+        <span class="font-mono text-xs text-ink-400">$ your.message</span>
+        <textarea
+          required
+          rows="5"
+          [ngModel]="message()"
+          (ngModelChange)="message.set($event)"
+          name="message"
+          class="mt-1 w-full rounded-md border border-ink-200 dark:border-ink-700 bg-ink-50 dark:bg-ink-950 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-accent resize-y"
+          placeholder="Tell me about your project..."
+        ></textarea>
+      </label>
+      <div class="flex items-center justify-between">
+        <p class="font-mono text-xs text-ink-400">
+          @if (sent()) {
+            <span class="text-emerald-500">✓ message dispatched to your mail client</span>
+          } @else {
+            <span>↪ runs in your default email client</span>
+          }
+        </p>
+        <button
+          type="submit"
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-ink-900 dark:bg-ink-100 text-ink-50 dark:text-ink-900 text-sm font-medium hover:opacity-90 transition-opacity"
+        >
+          ./send-message
+        </button>
+      </div>
+    </form>
+  </div>
+</section>

@@ -1,0 +1,52 @@
+<footer class="border-t border-ink-200 dark:border-ink-800">
+  <div class="max-w-6xl mx-auto px-6 py-10 grid md:grid-cols-3 gap-6">
+    <div>
+      <p class="font-mono text-xs text-ink-400 mb-2"><span class="text-accent">$</span> author</p>
+      <p class="font-semibold">{{ profile.name }}</p>
+      <p class="text-sm text-ink-600 dark:text-ink-300">{{ profile.role }}</p>
+      <p class="font-mono text-xs text-ink-400 mt-1">{{ profile.location }}</p>
+    </div>
+    <div>
+      <p class="font-mono text-xs text-ink-400 mb-2"><span class="text-accent">$</span> beyond.code</p>
+      <ul class="text-sm text-ink-600 dark:text-ink-300 space-y-1">
+        @for (interest of interests; track interest) {
+          <li class="flex gap-2"><span class="text-accent">▸</span>{{ interest }}</li>
+        }
+      </ul>
+    </div>
+    <div>
+      <p class="font-mono text-xs text-ink-400 mb-2"><span class="text-accent">$</span> connect</p>
+      <div class="flex flex-wrap gap-2">
+        @for (s of socials; track s.url) {
+          <a [href]="s.url" target="_blank" rel="noopener" class="text-xs px-2.5 py-1 rounded-md border border-ink-200 dark:border-ink-700 hover:text-accent hover:border-accent transition-colors">
+            {{ s.label }}
+          </a>
+        }
+      </div>
+    </div>
+  </div>
+  <div class="border-t border-ink-200 dark:border-ink-800">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex flex-col md:flex-row items-center justify-between gap-2 font-mono text-xs text-ink-500">
+      <p><span class="text-accent">$</span> echo "© {{ year }} {{ profile.name }}"</p>
+      <p class="flex flex-wrap items-center gap-x-1.5 gap-y-1 justify-center md:justify-end">
+        <span>built with</span>
+        <span class="text-accent">Angular</span>
+        <span>+</span>
+        <span class="text-accent">Tailwind</span>
+        <span>·</span>
+        <span>crafted using</span>
+        <a
+          href="https://claude.com/claude-code"
+          target="_blank"
+          rel="noopener"
+          class="text-accent hover:underline underline-offset-2 inline-flex items-center gap-1"
+        >
+          Claude Code
+          <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+          </svg>
+        </a>
+      </p>
+    </div>
+  </div>
+</footer>

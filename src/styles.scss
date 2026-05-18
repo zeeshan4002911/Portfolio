@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --bg-grid: rgba(15, 23, 42, 0.04);
+}
+
+.dark {
+  --bg-grid: rgba(148, 163, 184, 0.08);
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  @apply font-sans antialiased bg-ink-50 text-ink-900 dark:bg-ink-950 dark:text-ink-100 transition-colors duration-300;
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+}
+
+.grid-bg {
+  background-image:
+    linear-gradient(var(--bg-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--bg-grid) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.code-prompt::before {
+  content: '> ';
+  @apply text-accent;
+}
+
+.terminal-dot {
+  @apply h-3 w-3 rounded-full;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #7c3aed 0%, #06b6d4 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.glass {
+  @apply bg-white/70 dark:bg-ink-900/60 backdrop-blur-md border border-ink-200/60 dark:border-ink-800/60;
+}
+
+.scrollbar-thin::-webkit-scrollbar { width: 6px; height: 6px; }
+.scrollbar-thin::-webkit-scrollbar-thumb { @apply bg-ink-300 dark:bg-ink-700 rounded-full; }

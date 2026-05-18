@@ -1,0 +1,164 @@
+<section id="about" class="relative overflow-hidden grid-bg">
+  <div class="max-w-6xl mx-auto px-6 py-16 md:py-24 grid md:grid-cols-2 gap-12 items-center">
+    <!-- LEFT: terminal-style profile -->
+    <div class="font-mono text-sm space-y-6 animate-fade-up">
+      <!-- whoami pill -->
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-white dark:bg-ink-900 border border-ink-200 dark:border-ink-800 shadow-sm">
+        <div class="flex gap-1.5">
+          <span class="terminal-dot bg-red-400"></span>
+          <span class="terminal-dot bg-yellow-400"></span>
+          <span class="terminal-dot bg-green-400"></span>
+        </div>
+        <span class="text-ink-500">$ whoami</span>
+      </div>
+
+      <!-- name -->
+      <div>
+        <p class="text-ink-400 mb-2"><span class="text-accent">$</span> user.role_</p>
+        <h1 class="font-sans text-5xl md:text-6xl font-extrabold tracking-tight text-ink-900 dark:text-ink-50">
+          {{ profile.name }}
+        </h1>
+        <p class="mt-3 text-ink-500 dark:text-ink-400">
+          <span class="text-accent">&gt;</span> {{ profile.tagline }}
+        </p>
+        <p class="mt-1 text-ink-400 text-xs">
+          <span class="text-accent">&gt;</span> {{ profile.location }}
+        </p>
+      </div>
+
+      <!-- description code block -->
+      <div>
+        <p class="text-ink-400 mb-2"><span class="text-accent">$</span> user.description_</p>
+        <pre class="font-mono leading-relaxed text-[13px] text-ink-700 dark:text-ink-300 whitespace-pre-wrap"><span class="text-accent">[1]:</span> <span class="text-pink-500">profile</span> = {{ '{' }}
+  <span class="text-amber-500">role:</span> <span class="text-emerald-500">"{{ profile.role }}"</span>,
+  <span class="text-amber-500">focus:</span> <span class="text-emerald-500">"{{ profile.focus }}"</span>,
+  <span class="text-amber-500">expertise:</span> <span class="text-emerald-500">"{{ profile.expertise }}"</span>
+{{ '}' }}
+<span class="text-accent">[2]:</span> <span class="text-pink-500">display</span>(profile.summary)
+<span class="text-ink-400"># Output:</span>
+<span class="text-ink-700 dark:text-ink-200">{{ profile.summary }}</span>
+@for (line of profile.about; track line) {<span class="text-ink-700 dark:text-ink-200">{{ line }}</span>
+}</pre>
+      </div>
+
+      <!-- skills -->
+      <div>
+        <p class="text-ink-400 mb-3"><span class="text-accent">$</span> user.skills_</p>
+        <div class="flex flex-wrap gap-2">
+          @for (skill of heroSkills; track skill.label) {
+            <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-white dark:bg-ink-900 border border-ink-200 dark:border-ink-800 text-ink-700 dark:text-ink-200 text-xs shadow-sm">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
+              </svg>
+              {{ skill.label }}
+            </span>
+          }
+        </div>
+      </div>
+
+      <!-- socials -->
+      <div>
+        <p class="text-ink-400 mb-3"><span class="text-accent">$</span> user.socials_</p>
+        <div class="flex items-center gap-3">
+          @for (social of socials; track social.url) {
+            <a
+              [href]="social.url"
+              target="_blank"
+              rel="noopener"
+              [attr.aria-label]="social.label"
+              [title]="social.label"
+              class="h-9 w-9 inline-flex items-center justify-center rounded-md border border-ink-200 dark:border-ink-800 bg-white dark:bg-ink-900 text-ink-600 dark:text-ink-300 hover:text-accent hover:border-accent transition-colors"
+            >
+              @switch (social.platform) {
+                @case ('github') {
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.09 3.29 9.4 7.86 10.93.58.11.79-.25.79-.55v-1.93c-3.2.7-3.87-1.54-3.87-1.54-.52-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.71.08-.71 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.05 11.05 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.18 1.84 1.18 3.1 0 4.42-2.69 5.39-5.26 5.68.41.35.78 1.05.78 2.12v3.14c0 .31.21.66.8.55 4.57-1.53 7.85-5.84 7.85-10.93C23.5 5.65 18.35.5 12 .5z"/></svg>
+                }
+                @case ('linkedin') {
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.95v5.66H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.61 0 4.27 2.38 4.27 5.47v6.27zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zm-1.78 13.02h3.55V9H3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>
+                }
+                @case ('mail') {
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                }
+                @case ('phone') {
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                }
+                @case ('twitter') {
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                }
+              }
+            </a>
+          }
+        </div>
+      </div>
+
+      <!-- actions -->
+      <div>
+        <p class="text-ink-400 mb-3"><span class="text-accent">$</span> user.actions_</p>
+        <div class="flex flex-wrap gap-3">
+          <a
+            href="#projects"
+            class="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-ink-900 dark:bg-ink-100 text-ink-50 dark:text-ink-900 text-sm font-medium hover:opacity-90 transition-opacity"
+          >./view-projects</a>
+          <a
+            href="#contact"
+            class="inline-flex items-center gap-2 px-4 py-2 rounded-md border border-ink-300 dark:border-ink-700 text-sm font-medium hover:bg-ink-100 dark:hover:bg-ink-800 transition-colors"
+          >./contact-me</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: avatar + orbiting tech badges -->
+    <div class="relative flex items-center justify-center">
+      <div class="relative w-80 h-80 md:w-96 md:h-96">
+        <!-- soft halo -->
+        <div class="absolute inset-6 rounded-3xl bg-gradient-to-br from-accent/30 via-fuchsia-400/20 to-cyan-400/30 blur-2xl"></div>
+
+        <!-- glass card stack -->
+        <div class="absolute inset-0">
+          <div class="absolute inset-4 rounded-2xl bg-white/60 dark:bg-ink-900/50 border border-white/60 dark:border-ink-800/60 backdrop-blur-sm rotate-3"></div>
+          <div class="absolute inset-4 rounded-2xl bg-white/60 dark:bg-ink-900/50 border border-white/60 dark:border-ink-800/60 backdrop-blur-sm -rotate-2"></div>
+        </div>
+
+        <!-- avatar -->
+        <div class="absolute inset-8 rounded-2xl overflow-hidden border border-ink-200 dark:border-ink-800 shadow-card bg-gradient-to-br from-accent/20 to-cyan-400/20 flex items-center justify-center">
+          @if (!avatarFailed()) {
+            <img [src]="profile.avatarUrl" (error)="onAvatarError()" [alt]="profile.name" class="w-full h-full object-cover" />
+          } @else {
+            <span class="text-6xl font-bold text-accent">
+              {{ profile.name.charAt(0) }}{{ profile.name.split(' ')[1]?.charAt(0) ?? '' }}
+            </span>
+          }
+        </div>
+
+        <!-- orbit badges: real tech logos, click opens official site -->
+        @for (badge of orbitBadges; track badge.slug) {
+          <a
+            [href]="badge.url"
+            target="_blank"
+            rel="noopener"
+            [attr.aria-label]="badge.name"
+            [title]="badge.name"
+            class="absolute {{ badge.position }} h-10 w-10 rounded-xl flex items-center justify-center shadow-md animate-float hover:scale-110 hover:shadow-glow transition-transform duration-200 ring-1 ring-white/20"
+            [style.backgroundColor]="badge.color"
+            [style.animationDelay.ms]="$index * 350"
+          >
+            <img
+              [src]="iconUrl(badge.slug)"
+              [alt]="badge.name + ' logo'"
+              width="22"
+              height="22"
+              loading="lazy"
+              class="select-none pointer-events-none"
+            />
+          </a>
+        }
+      </div>
+    </div>
+  </div>
+
+  <!-- scroll indicator -->
+  <div class="flex flex-col items-center pb-8 font-mono text-xs text-ink-400">
+    <span><span class="text-accent">$</span> scroll to explore</span>
+    <span class="mt-2 inline-block w-px h-10 bg-gradient-to-b from-accent to-transparent"></span>
+  </div>
+</section>
