@@ -45,7 +45,7 @@ export interface Project {
   architecture: StackLayer[];
   github?: string;
   liveUrl?: string;
-  /** Extra resource links — e.g. backend repo, API URL, design file, blog post. */
+  /** Extra resource links - e.g. backend repo, API URL, design file, blog post. */
   links?: { label: string; url: string }[];
   /** Co-developers / collaborators rendered next to the role line. */
   collaborators?: { name: string; url?: string }[];
@@ -71,12 +71,12 @@ export interface Experience {
 /**
  * Floating tech-stack badges around the hero avatar.
  *
- * `devicon` follows the path `<folder>/<file>` from the devicon CDN — e.g.
+ * `devicon` follows the path `<folder>/<file>` from the devicon CDN - e.g.
  *   'angular/angular-original', 'kubernetes/kubernetes-plain'.
  * The full URL becomes:
  *   https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/{devicon}.svg
  *
- * Browse the catalog at https://devicon.dev — most icons have `-original`
+ * Browse the catalog at https://devicon.dev - most icons have `-original`
  * (full color), `-plain` (mono), and `-plain-wordmark` variants.
  *
  * `color` is the brand hex used for the hover ring + glow.
@@ -385,18 +385,18 @@ export const PORTFOLIO: PortfolioConfig = {
     },
     {
       id: 'laundry-cart',
-      title: 'Laundry Cart — MERN Stack',
+      title: 'Laundry Cart - MERN Stack',
       role: 'Co-developer · MERN Stack',
       collaborators: [
         { name: 'NoorMohammed789', url: 'https://github.com/NOORMOHAMMED789' },
       ],
       description:
-        'Full-stack laundry cart service built in collaboration with a fellow developer — responsive React frontend on Cloudflare Pages, plus a Node/Express/MongoDB backend with JWT auth deployed on Render.',
+        'Full-stack laundry cart service built in collaboration with a fellow developer - responsive React frontend on Cloudflare Pages, plus a Node/Express/MongoDB backend with JWT auth deployed on Render.',
       impact: [
         'Mobile-first, fully responsive frontend across breakpoints',
         'Secure REST API with JWT authentication and bcrypt password hashing',
         'Mongoose-modeled MongoDB schemas covering users, products, and orders',
-        'Frontend on Cloudflare Pages, backend on Render — both publicly live',
+        'Frontend on Cloudflare Pages, backend on Render - both publicly live',
       ],
       stack: ['React', 'Node.js', 'Express.js', 'MongoDB', 'Mongoose', 'JWT', 'Bcrypt'],
       architecture: [

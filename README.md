@@ -1,6 +1,6 @@
-# Portfolio — Md Zeeshan
+# Portfolio - Md Zeeshan
 
-A code-themed personal portfolio for **Md Zeeshan** (Full Stack LLM Analyst) — built with Angular 20, Tailwind CSS, and an aggressively config-driven content model so every section updates from one file.
+A code-themed personal portfolio for **Md Zeeshan** (Full Stack LLM Analyst) - built with Angular 20, Tailwind CSS, and an aggressively config-driven content model so every section updates from one file.
 
 > **Live site:** *https://zeeshan4002911.github.io/Portfolio*
 
@@ -10,13 +10,13 @@ A code-themed personal portfolio for **Md Zeeshan** (Full Stack LLM Analyst) —
 
 ## Highlights
 
-- **Single source of truth** — every section (profile, hero, skills, projects, experience, contact, footer) reads from [`src/app/config/portfolio.config.ts`](src/app/config/portfolio.config.ts). Edit one file → the whole site updates.
-- **Modern Angular** — Angular 20, signals, `input.required`, `@for` / `@if` / `@switch` control flow, OnPush change detection throughout, standalone components.
-- **Terminal / IDE aesthetic** — code-formatted hero card, blinking cursor brand, "$" prompt section headers, dark-mode architecture diagrams.
-- **Dark / light theme** — signal-based theme service, persisted to `localStorage`, respects `prefers-color-scheme` on first load.
-- **Featured + collapsible projects** — personal apps with live links on top; enterprise / internal projects tucked behind a `./show-more-projects` toggle.
-- **Real tech logos** — orbiting badges around the hero avatar are clickable anchors served from [simpleicons.org](https://simpleicons.org).
-- **Layered architecture cards** — each project shows a Client → API → Database → Infra stack diagram instead of a generic pipeline.
+- **Single source of truth** - every section (profile, hero, skills, projects, experience, contact, footer) reads from [`src/app/config/portfolio.config.ts`](src/app/config/portfolio.config.ts). Edit one file → the whole site updates.
+- **Modern Angular** - Angular 20, signals, `input.required`, `@for` / `@if` / `@switch` control flow, OnPush change detection throughout, standalone components.
+- **Terminal / IDE aesthetic** - code-formatted hero card, blinking cursor brand, "$" prompt section headers, dark-mode architecture diagrams.
+- **Dark / light theme** - signal-based theme service, persisted to `localStorage`, respects `prefers-color-scheme` on first load.
+- **Featured + collapsible projects** - personal apps with live links on top; enterprise / internal projects tucked behind a `./show-more-projects` toggle.
+- **Real tech logos** - orbiting badges around the hero avatar are clickable anchors served from [simpleicons.org](https://simpleicons.org).
+- **Layered architecture cards** - each project shows a Client → API → Database → Infra stack diagram instead of a generic pipeline.
 
 ---
 
@@ -131,7 +131,7 @@ Append to the `projects` array:
 }
 ```
 
-Architecture icons supported: `client | api | database | engine | integration | infra` — defaults to a generic box.
+Architecture icons supported: `client | api | database | engine | integration | infra` - defaults to a generic box.
 
 ### Add a hero orbit logo
 
@@ -148,7 +148,7 @@ orbitBadges: [
 ],
 ```
 
-Look up slugs at [simpleicons.org](https://simpleicons.org) — the logo is fetched from `cdn.simpleicons.org/{slug}/ffffff`.
+Look up slugs at [simpleicons.org](https://simpleicons.org) - the logo is fetched from `cdn.simpleicons.org/{slug}/ffffff`.
 
 ### Add a skill group / specialization / certification
 
@@ -160,13 +160,13 @@ Append to `experiences` (most-recent first). Set `current: true` to surface the 
 
 ### Reorder the page
 
-Edit [`src/app/app.html`](src/app/app.html) — the sections render in the order they appear. The nav order is controlled separately by the `nav` array in the config.
+Edit [`src/app/app.html`](src/app/app.html) - the sections render in the order they appear. The nav order is controlled separately by the `nav` array in the config.
 
 ---
 
 ## Theme & Styling
 
-- Theme toggle lives in the header and is powered by [`Theme`](src/app/services/theme.ts) — a signal that toggles `.dark` on `<html>` and persists to `localStorage`.
+- Theme toggle lives in the header and is powered by [`Theme`](src/app/services/theme.ts) - a signal that toggles `.dark` on `<html>` and persists to `localStorage`.
 - Custom palette / animations are defined in [`tailwind.config.js`](tailwind.config.js):
   - `ink` (slate-ish neutrals), `accent` (violet).
   - Animations: `float`, `blink`, `fade-up`, `pulse-slow`.
@@ -177,7 +177,7 @@ Edit [`src/app/app.html`](src/app/app.html) — the sections render in the order
 
 ## Deployment
 
-This is a pure SPA — any static host works. The repo ships ready for **GitHub Pages**; other targets just need the build output.
+This is a pure SPA - any static host works. The repo ships ready for **GitHub Pages**; other targets just need the build output.
 
 ### GitHub Pages (automated, recommended)
 
@@ -202,7 +202,7 @@ The workflow:
 
 Your site will live at `https://<username>.github.io/<repo>/` (or `https://<username>.github.io/` for a user-pages repo).
 
-> **Heads-up:** if you're using a custom domain, add a `CNAME` file to `public/` containing your domain — Angular will copy it into the build output and Pages will honor it.
+> **Heads-up:** if you're using a custom domain, add a `CNAME` file to `public/` containing your domain - Angular will copy it into the build output and Pages will honor it.
 
 ### Local dry-run of the Pages build
 
@@ -216,7 +216,7 @@ This builds with `--base-href ./` so the dist folder works no matter where you s
 
 ### Other static hosts
 
-Same idea — `npm run build` then upload `dist/portfolio/browser/`:
+Same idea - `npm run build` then upload `dist/portfolio/browser/`:
 
 | Host | Output directory |
 | --- | --- |

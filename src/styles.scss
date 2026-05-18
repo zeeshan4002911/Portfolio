@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 // Google Fonts are loaded asynchronously from index.html via <link rel="preload" as="style">
-// so they don't block first paint. Don't re-add the @import here — it would re-request the
+// so they don't block first paint. Don't re-add the @import here - it would re-request the
 // CSS over HTTP and undo the optimization.
 
 :root {

@@ -9,7 +9,7 @@ import {
 
 /**
  * Floating "back to top" button.
- * Shows once the user has scrolled past `threshold` pixels — i.e. when the
+ * Shows once the user has scrolled past `threshold` pixels - i.e. when the
  * sticky header is well behind them and the page no longer fits in the
  * initial viewport.
  */
