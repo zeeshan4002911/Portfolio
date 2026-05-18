@@ -1,6 +1,6 @@
 # Portfolio - Md Zeeshan
 
-A code-themed personal portfolio for **Md Zeeshan** (Full Stack LLM Analyst) - built with Angular 20, Tailwind CSS, and an aggressively config-driven content model so every section updates from one file.
+A code-themed personal portfolio built with Angular 20, Tailwind CSS, and an aggressively config-driven content model so every section updates from one file.
 
 > **Live site:** *https://zeeshan4002911.github.io/Portfolio*
 
