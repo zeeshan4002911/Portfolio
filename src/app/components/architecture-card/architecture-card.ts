@@ -2,12 +2,12 @@ import { ChangeDetectionStrategy, Component, computed, input, signal } from '@an
 import type { StackLayer } from '../../config/portfolio.config';
 
 @Component({
-  selector: 'app-pipeline-card',
-  templateUrl: './pipeline-card.html',
-  styleUrl: './pipeline-card.scss',
+  selector: 'app-architecture-card',
+  templateUrl: './architecture-card.html',
+  styleUrl: './architecture-card.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class PipelineCard {
+export class ArchitectureCard {
   readonly layers = input.required<StackLayer[]>();
 
   private readonly hovered = signal<number | null>(null);

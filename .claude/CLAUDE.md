@@ -36,7 +36,7 @@ src/app/
 │   ├── hero/                    terminal-style profile, avatar w/ animated frame, orbit logos
 │   ├── skills/                  specializations card + categorized skill matrix
 │   ├── projects/                featured + collapsible "show more" enterprise section
-│   ├── pipeline-card/           layered full-stack architecture diagram (used inside project cards)
+│   ├── architecture-card/       layered full-stack architecture diagram (used inside project cards)
 │   ├── experience/              work history + certifications, current/past badge
 │   ├── contact/                 direct contact cards + signal-based mailto form
 │   ├── footer/                  author, interests, socials, build credit
@@ -45,8 +45,6 @@ src/app/
 ├── app.routes.ts                empty; the page uses hash anchors not router
 └── app.config.ts                provideRouter + zone change detection
 ```
-
-> **Naming gotcha:** `pipeline-card` is the original component name but it now renders a layered architecture stack (Client → API → Database → Infra), not a pipeline. Rename if you have time; for now, accept the legacy folder name.
 
 ## Conventions
 

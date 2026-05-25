@@ -1,14 +1,5 @@
-// Pop-in entrance for the floating back-to-top button.
+// Pre-hidden state — motion takes over for the enter/exit animation.
 .back-to-top {
-  animation: btt-enter 260ms cubic-bezier(0.2, 0.9, 0.3, 1.2) both;
-}
-
-@keyframes btt-enter {
-  0%   { opacity: 0; transform: translateY(16px) scale(0.6); }
-  100% { opacity: 1; transform: translateY(0)    scale(1); }
-}
-
-// Reduced-motion: appear instantly without the pop
-@media (prefers-reduced-motion: reduce) {
-  .back-to-top { animation: none; }
+  opacity: 0;
+  will-change: opacity, transform;
 }

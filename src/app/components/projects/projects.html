@@ -1,13 +1,13 @@
 <section id="projects" class="relative">
   <div class="max-w-6xl mx-auto px-6 py-20">
-    <div class="text-center mb-12">
+    <div appReveal class="text-center mb-12">
       <p class="font-mono text-sm text-ink-400"><span class="text-accent">$</span> projects.featured</p>
       <h2 class="mt-2 text-3xl md:text-4xl font-extrabold tracking-tight">Featured Projects</h2>
       <p class="mt-3 text-sm text-ink-500 font-mono">$ live apps · click <span class="text-accent">↗</span> to launch</p>
     </div>
 
     <!-- featured: always visible -->
-    <div class="space-y-10">
+    <div appReveal revealStagger=".project-card" [revealStaggerDelay]="0.12" class="space-y-10">
       @for (project of featured; track project.id) {
         <ng-container *ngTemplateOutlet="card; context: { $implicit: project, idx: $index + 1 }"></ng-container>
       }
@@ -39,13 +39,13 @@
 
     <!-- collapsible: enterprise / professional projects -->
     @if (showMore()) {
-      <div class="mt-10 pt-10 border-t border-dashed border-ink-300 dark:border-ink-700">
+      <div appReveal class="mt-10 pt-10 border-t border-dashed border-ink-300 dark:border-ink-700">
         <div class="text-center mb-10">
           <p class="font-mono text-sm text-ink-400"><span class="text-accent">$</span> projects.professional</p>
           <h3 class="mt-2 text-2xl font-bold tracking-tight">Enterprise Work</h3>
           <p class="mt-2 text-xs text-ink-500 font-mono">internal client projects - no public link</p>
         </div>
-        <div class="space-y-10 animate-fade-up">
+        <div appReveal revealStagger=".project-card" [revealStaggerDelay]="0.1" class="space-y-10">
           @for (project of more; track project.id) {
             <ng-container *ngTemplateOutlet="card; context: { $implicit: project, idx: featured.length + $index + 1 }"></ng-container>
           }
@@ -57,11 +57,11 @@
 
 <!-- Reusable project card template -->
 <ng-template #card let-project let-idx="idx">
-  <article class="rounded-2xl border border-ink-200 dark:border-ink-800 bg-white dark:bg-ink-900/40 shadow-card overflow-hidden">
+  <article class="project-card rounded-2xl border border-ink-200 dark:border-ink-800 bg-white dark:bg-ink-900/40 shadow-card overflow-hidden">
     <div class="grid md:grid-cols-2 gap-0">
       <!-- left: architecture visualization -->
       <div class="p-6 md:border-r border-ink-200 dark:border-ink-800">
-        <app-pipeline-card [layers]="project.architecture" />
+        <app-architecture-card [layers]="project.architecture" />
       </div>
 
       <!-- right: info -->

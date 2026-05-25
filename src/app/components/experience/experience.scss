@@ -1,0 +1,18 @@
+// Experience cards: gentle lift + accent border on hover, matches projects.
+.experience-card {
+  transition:
+    transform 280ms cubic-bezier(0.22, 0.9, 0.3, 1),
+    border-color 280ms ease,
+    box-shadow 280ms ease;
+}
+
+.experience-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(124, 58, 237, 0.4);
+  box-shadow: 0 16px 32px -14px rgba(124, 58, 237, 0.28);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .experience-card,
+  .experience-card:hover { transform: none; transition: none; }
+}

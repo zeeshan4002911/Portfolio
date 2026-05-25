@@ -42,7 +42,7 @@ src/
 │   │   ├── hero/              # terminal-style profile, avatar, orbit logos
 │   │   ├── skills/            # specializations + categorized skill matrix
 │   │   ├── projects/          # featured + "show more" enterprise section
-│   │   ├── pipeline-card/     # layered full-stack architecture card
+│   │   ├── architecture-card/ # layered full-stack architecture card
 │   │   ├── experience/        # work history + certifications
 │   │   ├── contact/           # direct contacts + signal-based form
 │   │   └── footer/            # author, interests, socials, build credit

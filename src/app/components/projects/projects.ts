@@ -1,11 +1,12 @@
 import { NgTemplateOutlet } from '@angular/common';
 import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/core';
 import { PORTFOLIO } from '../../config/portfolio.config';
-import { PipelineCard } from '../pipeline-card/pipeline-card';
+import { RevealDirective } from '../../directives/reveal.directive';
+import { ArchitectureCard } from '../architecture-card/architecture-card';
 
 @Component({
   selector: 'app-projects',
-  imports: [PipelineCard, NgTemplateOutlet],
+  imports: [ArchitectureCard, NgTemplateOutlet, RevealDirective],
   templateUrl: './projects.html',
   styleUrl: './projects.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

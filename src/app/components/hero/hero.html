@@ -1,9 +1,9 @@
 <section id="about" class="relative overflow-hidden grid-bg">
   <div class="max-w-6xl mx-auto px-6 py-16 md:py-24 grid md:grid-cols-2 gap-12 items-center">
     <!-- LEFT: terminal-style profile -->
-    <div class="font-mono text-sm space-y-6 animate-fade-up">
+    <div appReveal revealStagger=".hero-step" [revealStaggerDelay]="0.09" [revealDuration]="0.55" class="font-mono text-sm space-y-6">
       <!-- whoami pill -->
-      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-white dark:bg-ink-900 border border-ink-200 dark:border-ink-800 shadow-sm">
+      <div class="hero-step inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-white dark:bg-ink-900 border border-ink-200 dark:border-ink-800 shadow-sm">
         <div class="flex gap-1.5">
           <span class="terminal-dot bg-red-400"></span>
           <span class="terminal-dot bg-yellow-400"></span>
@@ -13,7 +13,7 @@
       </div>
 
       <!-- name -->
-      <div>
+      <div class="hero-step">
         <p class="text-ink-400 mb-2"><span class="text-accent">$</span> user.role_</p>
         <h1 class="font-sans text-5xl md:text-6xl font-extrabold tracking-tight text-ink-900 dark:text-ink-50">
           {{ profile.name }}
@@ -27,7 +27,7 @@
       </div>
 
       <!-- description code block -->
-      <div>
+      <div class="hero-step">
         <p class="text-ink-400 mb-2"><span class="text-accent">$</span> user.description_</p>
         <pre class="font-mono leading-relaxed text-[13px] text-ink-700 dark:text-ink-300 whitespace-pre-wrap"><span class="text-accent">[1]:</span> <span class="text-pink-500">profile</span> = {{ '{' }}
   <span class="text-amber-500">role:</span> <span class="text-emerald-500">"{{ profile.role }}"</span>,
@@ -42,7 +42,7 @@
       </div>
 
       <!-- skills -->
-      <div>
+      <div class="hero-step">
         <p class="text-ink-400 mb-3"><span class="text-accent">$</span> user.skills_</p>
         <div class="flex flex-wrap gap-2">
           @for (skill of heroSkills; track skill.label) {
@@ -57,7 +57,7 @@
       </div>
 
       <!-- socials -->
-      <div>
+      <div class="hero-step">
         <p class="text-ink-400 mb-3"><span class="text-accent">$</span> user.socials_</p>
         <div class="flex items-center gap-3">
           @for (social of socials; track social.url) {
@@ -92,7 +92,7 @@
       </div>
 
       <!-- actions -->
-      <div>
+      <div class="hero-step">
         <p class="text-ink-400 mb-3"><span class="text-accent">$</span> user.actions_</p>
         <div class="flex flex-wrap gap-3">
           <a
@@ -109,7 +109,7 @@
 
     <!-- RIGHT: avatar + orbiting tech badges -->
     <div class="relative flex items-center justify-center">
-      <div class="relative w-80 h-80 md:w-96 md:h-96">
+      <div appReveal revealStagger=".orbit-badge" revealOpacityOnly [revealStaggerDelay]="0.07" [revealDelay]="200" class="relative w-80 h-80 md:w-96 md:h-96">
         <!-- soft halo -->
         <div class="absolute inset-6 rounded-3xl bg-gradient-to-br from-accent/30 via-fuchsia-400/20 to-cyan-400/30 blur-2xl"></div>
 
